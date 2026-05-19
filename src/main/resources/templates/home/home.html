@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="shared/_layout"><!--상단 고정바-->
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div layout:fragment="content">
+  <table class="UT">
+    <tr>
+      <th>Top3 선수들(골/도움/커트)</th>
+    </tr>
+    <tr th:each="topuser : ${Topuser}">
+      <td th:text="${topuser.u_nick}+'('+${topuser.u_goal}+'/'+${topuser.u_assi}+'/'+${topuser.u_cut}+')'"></td>
+    </tr>
+  </table>
+  <table class="TT">
+    <tr>
+      <th>Top3 팀</th>
+    </tr>
+    <tr th:each="topteams : ${topteam}">
+      <td th:text="${topteams.t_name}"></td>
+    </tr>
+  </table>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="footmap.footmap_spring.dao.userDao.UserMapper">
+    <select id="getUserList" resultType="footmap.footmap_spring.dto.userDto.User">
+        SELECT * FROM USER;
+    </select>
+
+    <select id="getTopuserList" resultType="footmap.footmap_spring.dto.userDto.User">
+        SELECT *
+        FROM USER
+        ORDER BY U_GOAL DESC LIMIT 0,3;
+    </select>
+
+    <insert id="saveUser" parameterType="footmap.footmap_spring.dto.userDto.User">
+        <!--회원가입-->
+        INSERT INTO USER(U_ID,U_PW,U_NICK,U_NAME,U_BIRTH,U_SEX,U_TEL,U_MAIL,USER_AUTH)
+        VALUES (#{u_id},#{u_pw},#{u_nick},#{u_name},#{u_birth},#{u_sex},#{u_tel},#{u_mail},#{user_auth});
+    </insert>
+
+    <select id="getUserAccount" resultType="footmap.footmap_spring.dto.userDto.User">
+        SELECT *
+        FROM USER
+        WHERE U_ID = #{u_id};
+    </select>
+
+    <update id="UpdateUser" parameterType="footmap.footmap_spring.dto.userDto.User">
+        UPDATE USER
+        SET
+        U_PW=#{u_pw},
+        U_NICK=#{u_nick},
+        U_TEL=#{u_tel},
+        U_MAIL=#{u_mail}
+        WHERE
+        U_ID=#{u_id};
+    </update>
+
+
+
+
+
+
+</mapper>
+

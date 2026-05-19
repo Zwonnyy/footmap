@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:href="@{/css/styles.css}" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <form action="/userupdateForm" method="post">
+        <div class="form-group">
+            <label>아이디:</label>
+            <label>
+                <input type="text" th:value="${users.getU_id()}" class="form-control"name="u_id"readonly>
+            </label>
+        </div>
+        <div class="form-group">
+            <label>비밀번호:</label>
+            <label>
+            <input class="form-control" type="password"  placeholder="Enter password" name="u_pw" id="u_pw"></label>
+        </div>
+        <div class="form-group">
+            <label>닉네임:</label>
+            <label>
+            <input class="form-control" type="text"  placeholder="Enter Nickname" name="u_nick" id="u_nick"></label>
+        </div>
+        <div class="form-group">
+            <label>이름:</label>
+            <label>
+            <input class="form-control" type="text" th:value="${users.getU_name()}" placeholder="Enter password" name="u_name" readonly></label>
+        </div>
+        <div class="form-group">
+            <label>생년월일:</label>
+            <label>
+            <input class="form-control" type="text" th:value="${users.getU_birth()}" placeholder="Enter password" name="u_birth" readonly></label>
+        </div>
+        <div class="form-group">
+            <label>전화번호:</label>
+            <label>
+            <input class="form-control" type="text" placeholder="Enter password" name="u_tel" id="u_tel"></label>
+        </div>
+        <div class="form-group">
+            <label>이메일:</label>
+            <label>
+            <input class="form-control" type="text" placeholder="Enter password" name="u_mail" id="u_mail"></label>
+        </div>
+        <button type="submit" id="modifyButton">수정하기</button><br>
+        <input type ="button" value = "취소" onClick="location.href='/Mypage'">
+        <script>
+            window.addEventListener('beforeunload', function (e) {
+                e.preventDefault();
+                e.returnValue = '';
+                alert("Please don't leave!");
+            });
+
+            $(function (){
+            $("#modifyButton").on("click",function (){
+                const u_pw = document.getElementById("u_pw");
+                const u_nick = document.getElementById("u_nick");
+                const u_tel =document.getElementById("u_tel");
+                const u_mail = document.getElementById("u_mail");
+
+                if (u_pw.value === ""){
+                    alert("비밀번호는 필수 입력값 입니다.");
+                    u_pw.focus();
+                    return false;
+                }
+                const pwdCheck = new RegExp('(?=.*[0-9])(?=.*[a-zA-Z])(?=.*\\W)(?=\\S+$).{8,16}');
+                if(!pwdCheck.test(u_pw.value)){
+                    alert("비밀번호는 8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.");
+                    u_pw.focus();
+                    return false;
+                }
+                if (u_nick.value === ""){
+                    alert("닉네임을 입력해주세요.");
+                    u_nick.focus();
+                    return false;
+                }
+                if (u_tel.value === ""){
+                    alert("전화번호는 필수입력 값 입니다.");
+                    u_tel.focus();
+                    return false;
+                }
+                const telcheck = new RegExp(/^(01[016789])-?\d{3,4}-?\d{4}$/);
+
+                if(!telcheck.test(u_tel.value)){
+                    alert("올바른 전화번호 형식이아닙니다 \r ex) 010-0000-0000");
+                    u_tel.focus();
+                    return false;
+                }
+                if (u_mail.value === ""){
+                    alert("메일은 필수입력값입니다.");
+                    u_mail.focus();
+                    return false;
+                }
+                const mailcheck = new RegExp(/^[\w+.-]+@[\w.-]+\.[a-z]{2,}$/);
+                if(!mailcheck.test(u_mail.value)){
+                    alert("올바른 메일형식이 아닙니다.");
+                    u_mail.focus();
+                    return false;
+                }
+                    alert("수정이 완료되었습니다.");
+
+
+            })
+
+                             })</script>
+    </form>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="footmap.footmap_spring.dao.boardDao.BoardMapper">
+
+    <!--게시판 목록 전체 조회-->
+    <select id="getBoardList" resultType="footmap.footmap_spring.dto.boardDto.Board" >
+        <![CDATA[
+        SELECT IDX,U_CODE,B_NICK,B_TITLE,B_CONTENTS,B_CNT,
+               IF(
+                           DATE_FORMAT(REG_DATE,'%Y%m%d')<DATE_FORMAT(now(),'%Y%m%d'),
+                           DATE_FORMAT(REG_DATE,'%Y-%m-%d'),
+                           DATE_FORMAT(REG_DATE,'%H:%i')
+                   )AS REG_DATE
+        FROM BOARD
+        WHERE DEL_CHK = 'N'
+        ORDER BY IDX DESC
+        ]]>
+    </select>
+
+    <!--게시글 작성-->
+    <insert id="writeAdd" parameterType="footmap.footmap_spring.dto.boardDto.Board">
+        INSERT INTO BOARD(U_CODE, B_NICK,B_TITLE,B_CONTENTS)
+        VALUES(#{u_code},#{b_nick},#{b_title},#{b_contents});
+    </insert>
+
+    <!--게시글 내용 보기-->
+    <select id="getBoardView" resultType="footmap.footmap_spring.dto.boardDto.Board">
+        SELECT B.B_TITLE,B.B_NICK,B.U_CODE,B.B_CONTENTS,T.T_NAME,B.B_CNT,U.U_ID,B.IDX,B.REG_DATE
+        FROM BOARD B
+        JOIN USER U ON B.U_CODE = U.U_CODE
+        LEFT JOIN TEAM_MANAGEMENT TM ON U.U_CODE=TM.U_CODE
+        LEFT JOIN TEAM T ON TM.T_CODE = T.T_CODE
+        WHERE B.IDX=#{idx};
+    </select>
+
+    <!--조회수 증가-->
+    <update id="readCountUpdate" parameterType="footmap.footmap_spring.dto.boardDto.Board">
+        UPDATE BOARD
+        SET B_CNT = B_CNT +1
+        WHERE IDX = #{idx}
+    </update>
+
+    <!--게시글 수정-->
+    <update id="writeUpdate" parameterType="footmap.footmap_spring.dto.boardDto.Board">
+        UPDATE BOARD
+        SET b_contents = #{b_contents},b_title=#{b_title}
+        WHERE IDX=#{idx};
+    </update>
+
+    <!-- 게시글 삭제-->
+    <update id="deleteBoard" parameterType="footmap.footmap_spring.dto.boardDto.Board">
+        UPDATE BOARD
+        SET DEL_CHK ='Y'
+        WHERE IDX=#{idx};
+    </update>
+
+    <select id="selectList" resultType="footmap.footmap_spring.dto.boardDto.Board">
+        SELECT IDX,U_CODE,B_NICK,B_TITLE,B_CONTENTS,B_CNT,REG_DATE
+        FROM BOARD
+        <include refid="search"></include>
+        ORDER BY IDX DESC
+        LIMIT #{skip},#{size}
+        <!--MtBatis는 기본적으로 getXXX,setXXX통해서 동작하므로 #{skip}경우 getSkip()호출함-->
+    </select>
+
+    <!--게시판 전체 개수 반환-->
+    <select id="getCount" resultType="int">
+        SELECT COUNT(IDX)
+        FROM BOARD
+        <include refid="search"></include>
+    </select>
+
+    <sql id="search">
+        <where>
+            DEL_CHK = 'N'
+            <if test="types != null and types.length>0">
+                <foreach collection="types" item="types" open="(" close=")" separator=" OR ">
+                    <if test="types=='t'.toString()">
+                        B_TITLE like concat('%',#{keyword},'%')
+                    </if>
+                    <if test="types=='w'.toString()">
+                        B_NICK like concat('%',#{keyword},'%')
+                    </if>
+                    <if test="types=='c'.toString()">
+                        B_CONTENTS like concat('%',#{keyword},'%')
+                    </if>
+                </foreach>
+            </if>
+        </where>
+    </sql>
+
+</mapper>

@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="shared/_layout">
+<head>
+    <title>Hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div layout:fragment="content">
+  <h2>커뮤니티 게시글 작성하기</h2>
+    <div>
+        <form th:action="@{/board/write}" method="POST">
+            <table>
+                <tr>
+                    <td>글제목</td>
+                    <td><input type="text" name="b_title"/></td>
+                </tr>
+                <tr>
+                    <td>작성자</td>
+                    <td><input type="text" th:value="${user.u_nick}" readonly/></td>
+                </tr>
+                <tr>
+                    <td>내용</td>
+                    <td><textarea rows = "10" cols = "100" name = "b_contents" placeholder = "게시글 입력"></textarea></td>
+                </tr>
+            </table>
+            <input type="submit" value="등록"/>
+            <input type="button" value="취소" onclick="location.href='/board/list'"/>
+        </form>
+    </div>
+</div>
+</body>
+</html>

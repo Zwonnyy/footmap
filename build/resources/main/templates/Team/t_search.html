@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="shared/_layout">
+<head>
+    <meta charset="UTF-8">
+    <title>팀 정보 검색</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <h2>팀 정보 검색</h2>
+
+    <input type="text" id="myInput" placeholder="팀 검색">
+    <button type="button">검색</button>
+    <button type="button" onclick="location.href='/Mypage'">내 팀보기</button>
+    <button type="button" onclick="location.href='/Team/t_commit'">팀 만들기</button>
+
+    <table id="myTable" border="1">
+        <thead>
+        <tr>
+            <th>엠블럼</th>
+            <th>팀 이름</th>
+            <th>전적</th>
+            <th>구장</th>
+            <th>상세</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="team : ${teams}">
+            <td>
+                <img width="72" height="72"
+                     th:src="${team.t_img != null and !team.t_img.isEmpty()} ? @{${team.t_img}} : @{/assets/default-team.svg}"
+                     alt="팀 엠블럼">
+            </td>
+            <td th:text="${team.t_name}"></td>
+            <td th:text="${team.t_vic} + '승 ' + ${team.t_draw} + '무 ' + ${team.t_lose} + '패'"></td>
+            <td th:text="${team.t_stadium}"></td>
+            <td>
+                <a th:href="@{/Team/team(t_code=${team.t_code})}">보기</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

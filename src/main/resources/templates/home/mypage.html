@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+
+</head>
+<body>
+<div>
+<table>
+  <tr>
+    <td colspan="10"><h3>개인정보</h3></td>
+  </tr>
+
+  <tr>
+  <th>아이디</th>
+  <td><div th:text="${users.u_id}"></div></td>
+  </tr>
+
+  <tr>
+  <th>이름</th>
+  <td><div th:text="${users.u_name}"></div></td>
+  </tr>
+
+  <tr>
+  <th>닉네임</th>
+  <td><div th:text="${users.u_nick}"></div></td>
+  </tr>
+
+  <tr>
+  <th>생년월일</th>
+  <td><div th:text="${users.u_birth}"></div></td>
+  </tr>
+
+  <tr>
+    <th>전화번호</th>
+  <td><div th:text="${users.u_tel}"></div></td>
+  </tr>
+
+  <tr>
+  <th>이메일</th>
+  <td><div th:text="${users.u_mail}"></div></td>
+  </tr>
+
+  <tr>
+  <th>골</th>
+  <td><div th:text="${users.u_goal}"></div></td>
+  </tr>
+
+  <tr>
+  <th>어시스트</th>
+  <td><div th:text="${users.u_assi}"></div></td>
+  </tr>
+
+  <tr>
+  <th>커트</th>
+  <td><div th:text="${users.u_cut}"></div></td>
+  </tr>
+
+  <tr>
+  <th>성별</th>
+  <td><div>
+    <span th:if="${users.u_sex == 1}">남자</span>
+    <span th:if="${users.u_sex == 2}">여자</span>
+  </div></td>
+  <tr>
+    <td colspan="5"><h3>소속팀</h3></td>
+  </tr>
+  <tr>
+  <th>팀이름</th>
+  <tr th:each="userinteam : ${userinteam}">
+    <td th:text="${userinteam.t_name}"></td>
+  </tr>
+
+  <button type="button" id="checkbutton" onclick="location.href='/CertificationupdateForm'">내정보 수정하기</button>
+  <button type="button" onclick="location.href='/'">홈으로</button>
+  <script> $(function (){
+    $("#checkbutton").on("click",function (){
+      alert("본인 인증 페이지로 이동합니다")
+    })
+  })</script>
+
+
+
+</table>
+</div>
+
+
+</body>
+</html>

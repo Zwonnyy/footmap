@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="shared/_layout">
+<head>
+  <title>Hello</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div layout:fragment="content">
+
+  <h2>게임등록</h2>
+
+  <div>
+    <form action="/game/register" method="POST">
+      <ul>
+        <li>팀이름<!--ajax-->
+          <!--name:server등에서 객체을 인식할 때 사용되는 이름
+          size:한번에 보여질 option의 갯수-->
+          <select name = "g_dung" required>
+            <option value="" disabled selected>팀이름</option>
+            <option value = "1" >부경바르셀</option>
+            <option value = "2">서울바르셀</option>
+            <option value = "3">HTML</option>
+          </select>
+        </li>
+        <li>
+          일시<input type="date" name="g_date">
+          시간<input type="time" name="g_time">
+        </li>
+        <li>
+          인원수
+          <select name="g_peo" required>
+            <option value="" disabled selected>인원수</option>
+            <option value="3vs3">3vs3</option>
+            <option value="4vs4">4vs4</option>
+            <option value="5vs5">5vs5</option>
+          </select>
+        </li>
+        <li>
+          지역
+          <select name="f_area" required>
+            <option value ="" disabled selected>지역</option>
+            <option value = "서울">서울</option>
+            <option value ="부산">부산</option>
+            <option value ="대구">대구</option>
+          </select>
+        </li>
+        <li>
+          구장코드 <!--ajax 이용--><input type="text" name = "f_code">
+        </li>
+        <li>
+          추가내용입력
+          <textarea rows = "10" cols = "100" name = "g_intro" placeholder = "추가내용 입력"></textarea>
+        </li>
+      </ul>
+      등록하기 <!--submit-->
+      <input type ="submit" id="" value = "등록하기" >
+      취소하기
+      <input type ="button" id=" " value = "취소하기" onClick="location.href='/game/search'">
+    </form>
+  </div>
+</div>
+</body>
+</html>

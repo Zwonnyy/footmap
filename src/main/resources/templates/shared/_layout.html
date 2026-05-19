@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+  <link th:href="@{/css/styles.css}" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+   <a href="/Page/s_intro"class="btn btn-primary submitBtn">페이지</a>
+   <a href="/game/search"class="btn btn-primary submitBtn">게임매칭</a>
+  <a href="/Team/t_search"class="btn btn-primary submitBtn">팀</a>
+  <a href="/board/list"class="btn btn-primary submitBtn">커뮤니티</a>
+  <a sec:authorize="isAnonymous()" th:href="@{/login}"class="btn btn-primary submitBtn">로그인</a><!--isAnonymous()는 권한이 없을시 즉 로그인이 안되있을시-->
+  <a sec:authorize="isAuthenticated()" th:href="@{/logout}"class="btn btn-primary submitBtn">로그아웃</a><!--isAuthenticated()는 권한이 있을시 즉 로그인이 되어있을시-->
+  <a sec:authorize="isAnonymous()" th:href="@{/signUp}"class="btn btn-primary submitBtn">회원가입</a>
+  <a sec:authorize="hasRole('USER')" th:href="@{/Mypage}"class="btn btn-primary submitBtn">내정보</a><!-- db_footmap.USER table에 role 칼럼에 ROLE_USER가 있어야 인가가 가능-->
+</head>
+<body>
+<div layout:fragment="content">
+  <p>Changing contents</p>
+</div>
+</body>
+<th:block layout:fragment="script">
+</th:block>
+</html>

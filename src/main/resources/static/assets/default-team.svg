@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 240 240" role="img" aria-label="default team emblem">
+  <rect width="240" height="240" fill="#f2f4f7"/>
+  <circle cx="120" cy="105" r="54" fill="#d7dde6"/>
+  <path d="M58 196c12-35 35-52 62-52s50 17 62 52" fill="#c6ceda"/>
+  <path d="M120 38l58 28v46c0 41-24 72-58 90-34-18-58-49-58-90V66l58-28z" fill="none" stroke="#7b8794" stroke-width="10"/>
+</svg>

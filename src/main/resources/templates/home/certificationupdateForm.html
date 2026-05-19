@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link th:href="@{/css/styles.css}" rel="stylesheet" />
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <form action="/Certificationupdate" method="post"onsubmit="jbSubmit();">
+    <div class="form-group">
+      <input class="form-control" type="hidden" th:value="${cerification}" id="certification">
+
+      <label>비밀번호:</label>
+      <input class="form-control" type="password"  placeholder="현재 비밀번호를 입력해주세요" name="u_pw" id="u_pw">
+    </div>
+    <button type="submit" id="modifyButton2">인증하기</button><br>
+    <input type ="button" value = "취소" onClick="location.href='/Mypage'">
+    <script>
+      function jbSubmit() {
+        const certi = document.getElementById("certification").value;
+        console.log("값",certi);
+        if (Boolean(certi) === false) {
+          alert("비밀번호가 다릅니다. 확인해주세요.");
+        }
+      }
+    </script>
+  </form>
+</div>
+</body>
+
+</html>

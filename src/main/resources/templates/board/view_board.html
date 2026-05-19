@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="shared/_layout">
+<head>
+  <title>Hello</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div layout:fragment="content">
+
+  <h2>게시글 내용 보기</h2>
+  <div class="row mt-3">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          Board view
+        </div><!--end card-header-->
+        <div class="card-body">
+          <div class="input-group mb-3">
+            <span class="input-group-text">번호</span>
+            <input type="text" class="form-control" th:value="${board.idx}" readonly>
+          </div>
+
+          <div class="input-group mb-3">
+            <span class="input-group-text">제목</span>
+            <input type="text" class="form-control" th:value="${board.b_title}" readonly>
+          </div>
+
+          <div class="input-group mb-3">
+            <span class="input-group-text">작성자</span>
+            <input type="text" class="form-control" th:value="${board.b_nick}+'('+${board.u_id}+')'" readonly>
+          </div>
+
+          <div class="input-group mb-3">
+            <span class="input-group-text">작성자 팀</span>
+            <input type="text" class="form-control" th:value="${board.t_name}" readonly>
+          </div>
+
+          <div class="input-group mb-3">
+            <span class="input-group-text">내용</span>
+            <textarea class="input-group-text col-sm-5" rows="5" th:text="${board.b_contents}" readonly></textarea>
+          </div>
+
+          <div class="input-group mb-3">
+            <span class="input-group-text">작성일</span>
+<!--            <input type="text" class="form-control" th:value="${#temporals.format(board.getReg_date(), 'yyyy-MM-dd')}" readonly>-->
+            <input type="text" class="form-control" th:value="${board.getReg_date()}" readonly>
+
+          </div>
+
+
+          <!--          <div class="input-group mb-3">-->
+<!--            <span class="input-group-text">수정일</span>-->
+<!--            <input type="text" class="form-control" th:value="${board.modDate}" readonly>-->
+<!--          </div>-->
+          <div class="my-4">
+            <div class="float-end">
+              <button><a th:href="@{/board/updateForm(idx=${board.idx}, page=${pageRequestDTO.page}, size=${pageRequestDTO.size}, types=${pageRequestDTO.types}, keyword=${pageRequestDTO.keyword})}">수정</a></button>
+<!--              <button th:onclick="|location.href='@{/board/updateForm(idx=${board.idx})}'|">수정하기</button>-->
+              <button th:onclick="|location.href='@{/board/delete(idx=${board.idx})}'|">삭제하기</button>
+              <button><a th:href="@{/board/list(page=${pageRequestDTO.page}, size=${pageRequestDTO.size}, types=${pageRequestDTO.types}, keyword=${pageRequestDTO.keyword})}">돌아가기</a></button>
+            </div> <!-- end float end-->
+          </div> <!--end my-4-->
+
+        </div><!--end card-body-->
+      </div><!--end card -->
+    </div><!--end col-->
+  </div><!--end row-->
+
+</div><!--end layout:fragment="content" -->
+</body>
+</html>

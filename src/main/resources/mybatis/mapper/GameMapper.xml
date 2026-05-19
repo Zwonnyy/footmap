@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="footmap.footmap_spring.dao.gameDao.GameMapper">
+    <!--게임찾기-->
+    <select id="getGameList" resultType="footmap.footmap_spring.dto.gameDto.game">
+        SELECT F.F_NAME, F.F_AREA, G.G_CODE, DATE_FORMAT(G.G_DATE,'%Y년%m월%d일') AS G_DATE, TIME_FORMAT(G.G_TIME,' %H시%i분') AS G_TIME, G.G_PEO, G.G_MAGAM, T.T_NAME
+        FROM GAMELIST G, FINFO F, TEAM T
+        WHERE F.F_CODE = G.F_CODE AND G.G_DUNG = T.T_CODE;
+    </select>
+
+    <!--게임등록-->
+    <insert id="addGame" parameterType="footmap.footmap_spring.dto.gameDto.game">
+        INSERT INTO GAMELIST(G_DUNG,G_DATE,G_TIME,G_PEO,G_MAGAM,F_CODE,G_INTRO)
+        VALUES( #{g_dung},#{g_date},#{g_time},#{g_peo},1,#{f_code},#{g_intro});
+    </insert>
+</mapper>

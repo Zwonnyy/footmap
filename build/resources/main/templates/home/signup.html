@@ -1,0 +1,77 @@
+<!--회원가입 페이지-->
+<!--signup.html-->
+
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<head>
+  <meta charset="UTF-8">
+  <style>
+    .jb-red {
+      color: red;
+    }
+  </style>
+
+</head>
+<body>
+<div>
+  <form th:action="@{/Write}" method="post" modelAttribute="user">
+    <h1>회원가입</h1>
+    <div class="form-group">
+      <li> <label>ID</label>
+        <input type="text" name="u_id" th:value="${user?.u_id}" placeholder="소문자+숫자"class="in"></li>
+      <span class="jb-red" th:text="${valid_u_id}"></span>
+    </div>
+    <div class="form-group">
+      <li><label>PASSWORD</label>
+        <input type="password" name="u_pw" th:value="${user?.u_pw}"placeholder="대문자,소문자,숫자,문자"class="in"></li>
+      <span class="jb-red" th:text="${valid_u_pw}"></span>
+    </div>
+    <div class="form-group">
+      <li><label>닉네임</label>
+        <input type="text" name="u_nick"th:value="${user?.u_nick}" placeholder="특수문자 불가" class="in"></li>
+      <span class="jb-red" th:text="${valid_u_nick}"></span>
+    </div>
+    <div class="form-group">
+      <li><label>이름</label>
+        <input type="text" name="u_name"th:value="${user?.u_name}" placeholder="이름"class="in"></li>
+      <span class="jb-red" th:text="${valid_u_name}"></span>
+    </div>
+    <div class="form-group">
+      <li><label>생년월일</label>
+        <input type="text" name="u_birth"th:value="${user?.u_birth}" placeholder="ex)1999-11-11"></li>
+      <span class="jb-red" th:text="${valid_u_birth}"></span>
+    </div>
+    <div class="form-group">
+      <li><label>성별</label>
+        <input type='radio' name='u_sex'th:checked="${user?.u_sex == 2}" value=2 />여성
+        <input type='radio' name='u_sex'th:checked="${user?.u_sex == 1}" value=1 />남성
+      </li>
+      <span class="jb-red" th:text="${valid_u_sex}"></span>
+    </div>
+    <div class="form-group">
+      <li><label>전화번호</label>
+        <input type="text" name="u_tel"th:value="${user?.u_tel}" placeholder="ex)010-****-****"></li>
+      <span class="jb-red" th:text="${valid_u_tel}"></span>
+    </div>
+    <div class="form-group">
+      <li><label>이메일</label>
+        <input type="text" name="u_mail"th:value="${user?.u_mail}" placeholder="ex)aaaaa@naver.com"></li>
+      <span class="jb-red" th:text="${valid_u_mail}"></span>
+    </div>
+
+    <input type="submit" value="가입완료"><br>
+    <input type ="button" value = "취소" onClick="location.href='/'">
+    <script>
+      window.addEventListener('beforeunload', function (e) {
+        e.preventDefault();
+        e.returnValue = '';
+        alert("Please don't leave!");
+      });
+    </script>
+  </form>
+</div>
+</body>
+</html>

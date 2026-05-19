@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7bc6505f-eac8-48cb-b078-128c5a1d32fe" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/footmap_spring.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/footmap_spring.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/footmap_spring.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/footmap_spring.test.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/restartF_B.footmap_spring.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/restartF_B.footmap_spring.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/footmap/footmap_spring/controller/BoardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/footmap/footmap_spring/controller/BoardController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/footmap/footmap_spring/controller/MatchController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/footmap/footmap_spring/controller/MatchController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/footmap/footmap_spring/controller/NoticeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/footmap/footmap_spring/controller/NoticeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/footmap/footmap_spring/dao/boardDao/BoardMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/footmap/footmap_spring/dao/boardDao/BoardMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/footmap/footmap_spring/dao/matchDao/MatchMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/footmap/footmap_spring/dao/matchDao/MatchMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/footmap/footmap_spring/dao/noticeDao/NoticeMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/footmap/footmap_spring/dao/noticeDao/NoticeMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/footmap/footmap_spring/dto/matchDto/match.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/footmap/footmap_spring/dto/matchDto/match.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/footmap/footmap_spring/dto/noticeDto/notice.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/footmap/footmap_spring/dto/noticeDto/notice.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/footmap/footmap_spring/service/boardService/BoardService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/footmap/footmap_spring/service/boardService/BoardService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/footmap/footmap_spring/service/boardService/BoardServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/footmap/footmap_spring/service/boardService/BoardServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/footmap/footmap_spring/service/matchService/MatchService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/footmap/footmap_spring/service/matchService/MatchService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/footmap/footmap_spring/service/matchService/MatchServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/footmap/footmap_spring/service/matchService/MatchServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/footmap/footmap_spring/service/noticeService/NoticeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/footmap/footmap_spring/service/noticeService/NoticeService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/footmap/footmap_spring/service/noticeService/NoticeServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/footmap/footmap_spring/service/noticeService/NoticeServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/footmap/footmap_spring/controller/BoardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/footmap/footmap_spring/controller/BoardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/footmap/footmap_spring/dao/boardDao/BoardMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/footmap/footmap_spring/dao/boardDao/BoardMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/footmap/footmap_spring/dto/PageRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/footmap/footmap_spring/dto/PageRequestDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/footmap/footmap_spring/dto/PageResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/footmap/footmap_spring/dto/PageResponseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/footmap/footmap_spring/service/boardService/BoardService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/footmap/footmap_spring/service/boardService/BoardService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/footmap/footmap_spring/service/boardService/BoardServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/footmap/footmap_spring/service/boardService/BoardServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/BoardMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/BoardMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/board/list_board.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/board/list_board.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/board/update_board.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/board/update_board.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/board/view_board.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/board/view_board.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="footmap_spring" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2JrscS8pOdBygSB2Dq2h6tc8Uec" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showVisibilityIcons" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "settings.editor.selected.configurable": "Errors",
+    "spring.configuration.checksum": "0c8d536d3cd27cf5eea5588627c60d4e"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="FootmapSpringApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <option name="ACTIVE_PROFILES" />
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="restartF_B.footmap_spring.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="footmap.footmap_spring.FootmapSpringApplication" />
+      <option name="UPDATE_ACTION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="footmap.footmap_spring.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.FootmapSpringApplication" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7bc6505f-eac8-48cb-b078-128c5a1d32fe" name="Changes" comment="" />
+      <created>1672847616804</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1672847616804</updated>
+      <workItem from="1672847617956" duration="75000" />
+      <workItem from="1672847762432" duration="276000" />
+      <workItem from="1672848094850" duration="29165000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/.." />
+    </ignored-roots>
+  </component>
+</project>

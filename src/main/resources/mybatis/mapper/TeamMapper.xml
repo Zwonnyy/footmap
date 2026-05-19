@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="footmap.footmap_spring.dao.teamDao.TeamMapper">
+    <select id="getTeamList" resultType="footmap.footmap_spring.dto.teamDto.team">
+        SELECT * FROM TEAM;
+    </select>
+
+    <select id="getTopTeam" resultType="footmap.footmap_spring.dto.teamDto.team">
+        SELECT T_NAME
+        FROM TEAM
+        ORDER BY T_VIC DESC LIMIT 0,3;
+    </select>
+
+    <select id="getTeaminUser" resultType="footmap.footmap_spring.dto.teamDto.team" parameterType="string">
+        SELECT T.T_CODE, T.T_IMG, T.T_NAME, T.T_STADIUM, T.T_VIC, T.T_DRAW, T.T_LOSE, T.T_INTRO
+        FROM USER U, TEAM_MANAGEMENT TM, TEAM T
+        WHERE U.U_CODE=TM.U_CODE and TM.T_CODE=T.T_CODE
+        AND U.U_CODE = #{u_code};
+    </select>
+
+    <select id="getTeam" resultType="footmap.footmap_spring.dto.teamDto.team" parameterType="int">
+        SELECT T_CODE, T_IMG, T_NAME, T_STADIUM, T_VIC, T_DRAW, T_LOSE, T_INTRO
+        FROM TEAM
+        WHERE T_CODE = #{t_code};
+    </select>
+
+    <insert id="addTeam" parameterType="footmap.footmap_spring.dto.teamDto.team">
+        INSERT INTO TEAM(T_IMG, T_NAME, T_STADIUM, T_VIC, T_DRAW, T_LOSE, T_INTRO)
+        VALUES(#{t_img}, #{t_name}, #{t_stadium}, 0, 0, 0, #{t_intro});
+    </insert>
+
+
+
+</mapper>

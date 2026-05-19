@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<style>
+    input[id*="popup"]{
+        display: none;
+    }
+    input[id*="popup"] + label{
+        width: 60px;
+        height: 10px;
+        display: inline-block;
+        padding: 15px;
+        background: black;
+        color: white;
+        text-align: center;
+           }
+    input[id*="popup"] + label + div{
+        opacity: 0;visibility: hidden;transition: all 1s;
+
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 100;
+            }
+    input[id*="popup"]:checked + label + div{
+        opacity: 1;visibility: visible;
+
+    }
+    input[id*="popup"] + label + div > div {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50%;
+        height: 300px;
+        background: #fff;
+        z-index: 2;
+    }
+    input[id*="popup"] + label + div > div > label {
+        position: absolute;
+        top: 0%;
+        right: 0%;
+        transform: translate(40%, -40%);
+        padding: 20px;
+        background: #dd5347;
+        border-radius: 100%;
+        z-index: 1;
+    }
+    input[id*="popup"] + label + div > label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, .9);
+        z-index: 1;
+    }
+  </style>
+
+<head>
+    <meta charset="UTF-8">
+    <title>내 팀 보기</title>
+    <H2 STYLE="text-align: center"> 내 팀 보기</H2>
+    <select>
+        <option> ${ TEAM.T_NAME } </option>
+        <option> ${ TEAM.T_NAME } </option>
+        <option> DDDDD </option>
+        <option> ${ TEAM.T_NAME } </option>
+    </select>
+</head>
+
+<body>
+    <div class="em" th:each="team : ${userinteam}">
+        <img th:src="${team.t_img != null and !team.t_img.isEmpty()} ? ${team.t_img} : @{/assets/default-team.svg}"
+             class="ig" style="text-align: left" width="100" height="100" alt="팀 엠블럼">
+        <li th:text="${team.t_name}"></li>
+        <li>주장</li>
+        <li th:text="${team.t_stadium}"></li>
+    </div>
+    <table style="width:80%">
+        <colgroup>
+            <col span="1" style="background-color: #D6EEEE">
+        </colgroup>
+        <tr STYLE="text-align: center">
+            <th>아이디</th>
+            <th>닉네임</th>
+            <th>스  탯</th>
+        </tr>
+        <tr STYLE="text-align: center">
+            <td>${ USER.U_ID }</td>
+            <td>${ USER.U_NICK }</td>
+            <td>${ USER.U_GOAL } / ${ USER.U_ASSI } / ${ USER.U_CUT }</td>
+        </tr>
+    </table>
+    <H3>팀원 영입</H3>
+    <table style="width:80%">
+            <tr BGCOLOR="#D6EEEE">
+            <th>아이디</th>
+            <th>스 탯 </th>
+            <th>영입여부</th>
+        </tr>
+        <tr STYLE="text-align: center">
+            <td> ${ USER.U_ID } </td>
+            <td> ${ USER.U_GOAL } / ${ USER.U_ASSI } / ${ USER.U_CUT } </td>
+            <TD><BUTTON TYPE="submit" STYLE="text-align: center"> 영입 </BUTTON></TD>
+        </tr>
+    </table>
+    <H3>팀원 방출</H3>
+    <table style="width:80%">
+        <tr BGCOLOR="#D6EEEE">
+            <th>No.</th>
+            <th>아이디 </th>
+            <th>방출 여부</th>
+        </tr>
+        <tr STYLE="text-align: center">
+            <td>[[${ USER.U_ID }]]</td>
+            <td>[[${ USER.U_ID }]]</td>
+            <td><BUTTON TYPE="submit" STYLE="text-align: center"> 방출 </BUTTON></td>
+        </tr>
+    </table>
+    <br>
+    <br>
+    <br>
+
+   <input type="checkbox" id="popup">
+        <label for="popup"> 팀 삭제 </label>
+    <div>
+        <div style="width: 200px; height: 150px;">
+            <label for="popup">  </label>
+            <h3 style="text-align: center">삭제 하시겠습니까?</h3>
+            <div class="yon" style="text-align: center">
+            <input type="submit" value="네" onclick="self.Close()">
+            <input type="button" value="아니오" >
+        </div>
+        </div>
+        <label for="popup"> </label>
+    </div>
+
+</body>
+</html>

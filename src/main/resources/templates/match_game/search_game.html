@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="shared/_layout">
+<head>
+  <title>Hello</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div layout:fragment="content">
+
+  <h2>게임찾기</h2>
+  <table border="3">
+    <thead>
+    <tr>
+      <th>팀 이름</th>
+      <th>게임정보</th>
+      <th>매칭여부</th> <!--매칭 전이면 신청하기 버튼 / 매칭 됬으면 마감 버튼-->
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="game:${game}">
+      <td th:text="${game.t_name}"></td>
+      <td><p th:text="'게임일시:'+${game.g_date}+${game.g_time}"></p>
+        <p th:text="'경기장:'+${game.f_name}"></p>
+        <p th:text="'경기방식:'+${game.g_peo}"></p>
+      </td>
+      <!--<td th:text="'게임일시:'+${game.g_date}+'경기방식:'+${game.g_peo}+'경기장:'+${game.f_name}"></td>-->
+      <td><input type="button" value="신청하기"></td>
+    </tr>
+    </tbody>
+  </table>
+  <p><a href="/game/list"><input type="button" value="내게임 내역"></a></p>
+  <p><input type="text"><input type="button" value="검색하기"></p> <!--ajax-->
+
+</div>
+</body>
+</html>

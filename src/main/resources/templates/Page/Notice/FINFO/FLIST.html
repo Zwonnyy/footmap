@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>F_LIST</title>
+    <ul class="dd" style=" list-style-type:none">
+    <li>
+        <a href="/Page/s_intro">사이트 소개</a>
+        <a href="/Page/s_rule">사이트 이용 수칙</a>
+        <a href="/Page/FINFO">풋살장 정보</a>
+        풋살장 리스트
+        <a href="/Page/Notice">공지사항</a>
+        <a href="/Page/Event">Event</a>
+        <a href="/Page/FAQ">FAQ</a>
+    </li>
+
+    </ul>
+    <h2>풋살장 리스트</h2>
+
+</head>
+<body>
+
+<TABLE border="0" class="table table-striped">
+<tr>
+    <th>사진</th>
+    <th>지역</th>
+    <th>이 름</th>
+    <th>주 소</th>
+    <th>규 격</th>
+</tr>
+<tr th:each="field,index : ${field}" , th:if="${index.index}<10">
+    <td>
+        <img width="120" height="68"
+             th:src="${field.getF_IMG() != null and !field.getF_IMG().isEmpty()} ? ${field.getF_IMG()} : @{/assets/default-field.svg}"
+             alt="풋살장 이미지">
+    </td>
+    <td th:text="${field.getF_AREA()}">지역</td>
+    <td th:text="${field.getF_NAME()}">이름</td>
+    <td th:text="${field.getF_ADD()}">주소</td>
+    <td th:text="${field.getF_SOU()}">규격</td>
+</tr>
+</TABLE>
+<!--<table id="title">-->
+
+<!--    <tr>-->
+
+<!--        <select id="srchColumn" class="_selectBox">-->
+<!--            <option value="sj">서울/경기</option>-->
+<!--            <option value="addItem">부산/경남</option>-->
+<!--            <option value="addItem1">대구/경북</option>-->
+<!--        </select>-->
+<!--        <label for="srchWrd" class="hiddenT">검색어 입력</label>-->
+<!--        <input type="text" id="srchWrd" name="srchWrd" value="">-->
+<!--        <span class="_button fnSubmit">-->
+<!--                <input type="submit" onclick="keyup(); return false;" value="검색">-->
+<!--        </span>-->
+<!--    </tr>-->
+<!--    <table border="1">-->
+<!--        <tr>-->
+<!--            <th>NUM.</th>-->
+<!--            <th>이름</th>-->
+<!--            <th>지역</th>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <c:foreach van="F_CODE" begin="1" end="5">-->
+<!--            <td>${ finfo3.F_CODE }</td>-->
+<!--            <td><a href="/Notice?f.name">${ finfo3.F_NAME }</td>-->
+<!--            <td>${ finfo3.F_ADD }</td>-->
+<!--            </c:foreach>-->
+<!--        </tr>-->
+
+
+<!--    </table>-->
+
+</body>
+</html>

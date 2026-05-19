@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>풋살장 정보</title>
+</head>
+<body>
+<nav>
+    <a href="/Page/s_intro">사이트 소개</a>
+    <a href="/Page/s_rule">사이트 이용 수칙</a>
+    풋살장 정보
+    <a href="/Page/FLIST">풋살장 리스트</a>
+    <a href="/Page/Notice">공지사항</a>
+    <a href="/Page/Event">Event</a>
+    <a href="/Page/FAQ">FAQ</a>
+</nav>
+
+<h2>풋살장 정보</h2>
+
+<div th:each="field : ${field}">
+    <img width="320" height="180"
+         th:src="${field.getF_IMG() != null and !field.getF_IMG().isEmpty()} ? ${field.getF_IMG()} : @{/assets/default-field.svg}"
+         alt="풋살장 이미지">
+    <h3 th:text="${field.getF_NAME()}"></h3>
+    <p th:text="${field.getF_AREA()}"></p>
+    <p th:text="${field.getF_ADD()}"></p>
+    <p th:text="${field.getF_SOU()}"></p>
+</div>
+</body>
+</html>

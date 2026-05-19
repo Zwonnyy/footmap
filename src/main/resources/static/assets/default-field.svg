@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="180" viewBox="0 0 320 180" role="img" aria-label="default futsal field">
+  <rect width="320" height="180" fill="#e9f5ee"/>
+  <rect x="18" y="18" width="284" height="144" fill="none" stroke="#6aa57b" stroke-width="6"/>
+  <line x1="160" y1="18" x2="160" y2="162" stroke="#6aa57b" stroke-width="4"/>
+  <circle cx="160" cy="90" r="30" fill="none" stroke="#6aa57b" stroke-width="4"/>
+  <rect x="18" y="55" width="42" height="70" fill="none" stroke="#6aa57b" stroke-width="4"/>
+  <rect x="260" y="55" width="42" height="70" fill="none" stroke="#6aa57b" stroke-width="4"/>
+</svg>
