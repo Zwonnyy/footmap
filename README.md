@@ -1,4 +1,4 @@
-# Footmap Spring
+# Footmap
 
 풋살 팀과 매치를 찾고, 경기 정보를 등록하며, 커뮤니티 게시판과 공지/풋살장 정보를 함께 제공하는 Spring Boot 기반 웹 애플리케이션입니다.
 
@@ -28,7 +28,7 @@
 ## 프로젝트 구조
 
 ```text
-src/main/java/footmap/footmap_spring
+src/main/java/footmap/footmap
 ├── Security/        # 사용자 인증 상세 서비스와 로그인 실패 핸들러
 ├── config/          # Spring Security, 정적 리소스, 업로드 경로 설정
 ├── controller/      # 화면 요청 처리 컨트롤러
