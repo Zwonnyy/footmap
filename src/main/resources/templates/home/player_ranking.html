@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="shared/_layout">
+<head>
+  <meta charset="UTF-8">
+  <title>선수 랭킹</title>
+</head>
+<body>
+<div layout:fragment="content">
+  <div class="page-title-row">
+    <div>
+      <p class="eyebrow">Players</p>
+      <h1>선수 랭킹</h1>
+    </div>
+  </div>
+
+  <section class="ranking-grid">
+    <article class="panel-card ranking-card">
+      <div class="card-header">종합 랭킹</div>
+      <div class="card-body">
+        <table class="table app-table">
+          <thead><tr><th>선수</th><th>점수</th><th>기록</th></tr></thead>
+          <tbody>
+          <tr th:each="player : ${overallRanking}">
+            <td><a th:href="@{/players/detail(u_code=${player.u_code})}" th:text="${player.u_nick}">닉네임</a></td>
+            <td th:text="${player.u_goal * 3 + player.u_assi * 2 + player.u_cut}">0</td>
+            <td th:text="${player.u_goal}+'/'+${player.u_assi}+'/'+${player.u_cut}">0/0/0</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article class="panel-card ranking-card">
+      <div class="card-header">골 랭킹</div>
+      <div class="card-body">
+        <table class="table app-table compact-table">
+          <tbody>
+          <tr th:each="player : ${goalRanking}">
+            <td><a th:href="@{/players/detail(u_code=${player.u_code})}" th:text="${player.u_nick}">닉네임</a></td>
+            <td th:text="${player.u_goal}">0</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article class="panel-card ranking-card">
+      <div class="card-header">어시스트 랭킹</div>
+      <div class="card-body">
+        <table class="table app-table compact-table">
+          <tbody>
+          <tr th:each="player : ${assistRanking}">
+            <td><a th:href="@{/players/detail(u_code=${player.u_code})}" th:text="${player.u_nick}">닉네임</a></td>
+            <td th:text="${player.u_assi}">0</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article class="panel-card ranking-card">
+      <div class="card-header">수비 랭킹</div>
+      <div class="card-body">
+        <table class="table app-table compact-table">
+          <tbody>
+          <tr th:each="player : ${cutRanking}">
+            <td><a th:href="@{/players/detail(u_code=${player.u_code})}" th:text="${player.u_nick}">닉네임</a></td>
+            <td th:text="${player.u_cut}">0</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+  </section>
+</div>
+</body>
+</html>

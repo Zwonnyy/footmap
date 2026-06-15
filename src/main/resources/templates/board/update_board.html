@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html lang="ko" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="shared/_layout">
+<head>
+  <title>게시글 수정</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div layout:fragment="content">
+
+  <div class="page-title-row">
+    <div>
+      <p class="eyebrow">Community</p>
+      <h1>게시글 수정</h1>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col">
+      <div class="card panel-card">
+        <div class="card-header">
+          게시글 수정
+        </div><!--end card-header-->
+        <div class="card-body">
+          <form action="/board/update" method="post">
+            <div class="input-group mb-3">
+              <span class="input-group-text">번호</span>
+              <input type="text" name="idx" class="form-control" th:value="${board.idx}" readonly>
+            </div>
+
+            <div class="input-group mb-3">
+              <span class="input-group-text">제목</span>
+              <input  type="text"  name="b_title" th:value="${board.b_title}" class="form-control"/>
+            </div>
+
+            <div class="input-group mb-3">
+              <span class="input-group-text">작성자</span>
+              <input type="text" class="form-control" th:value="${board.b_nick} +'('+${board.u_id}+')'" readonly>
+            </div>
+
+            <div class="input-group mb-3">
+              <span class="input-group-text">작성자 팀</span>
+              <input type="text" class="form-control" name="t_name" th:value="${board.t_name}" readonly>
+            </div>
+
+            <div class="input-group mb-3">
+              <span class="input-group-text">내용</span>
+              <textarea class="form-control" rows="8" name="b_contents">
+                [[${board.b_contents}]]
+              </textarea>
+            </div>
+
+            <div class="input-group mb-3">
+              <span class="input-group-text">작성일</span>
+              <input type="text" class="form-control" name="reg_date" th:value="${board.reg_date}" readonly>
+            </div>
+
+            <!--          <div class="input-group mb-3">-->
+            <!--            <span class="input-group-text">수정일</span>-->
+            <!--            <input type="text" class="form-control" th:value="${board.modDate}" readonly>-->
+            <!--          </div>-->
+
+
+            <div class="my-4">
+              <div class="action-row">
+                <input type="submit" value="수정하기" class="btn btn-primary"/>
+                <input type="button" value="취소하기" class="btn btn-outline-primary" onClick="location.href='/board/list'"/>
+              </div> <!-- end float end-->
+            </div> <!--end my-4-->
+          </form>
+        </div><!--end card-body-->
+      </div><!--end card -->
+    </div><!--end col-->
+  </div><!--end row-->
+
+</div><!--end layout:fragment="content" -->
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link th:href="@{/css/styles.css}" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FootMap</title>
+</head>
+<body>
+  <header class="app-header">
+    <nav class="app-nav">
+      <a class="brand" th:href="@{/}">FootMap</a>
+      <div class="nav-links">
+        <a th:href="@{/Page/s_intro}">소개</a>
+        <a th:href="@{/game/search}">게임매칭</a>
+        <a th:href="@{/Team/t_search}">팀</a>
+        <a th:href="@{/players/ranking}">선수</a>
+        <a th:href="@{/board/list}">커뮤니티</a>
+      </div>
+      <div class="nav-actions">
+        <a sec:authorize="isAnonymous()" th:href="@{/login}" class="btn btn-outline-primary">로그인</a>
+        <a sec:authorize="isAnonymous()" th:href="@{/signUp}" class="btn btn-primary">회원가입</a>
+        <a sec:authorize="isAuthenticated()" th:href="@{/Mypage}" class="btn btn-outline-primary">내정보</a>
+        <a sec:authorize="isAuthenticated()" th:href="@{/logout}" class="btn btn-primary">로그아웃</a>
+      </div>
+    </nav>
+  </header>
+  <main class="app-shell" layout:fragment="content">
+    <p>Changing contents</p>
+  </main>
+</body>
+<th:block layout:fragment="script">
+</th:block>
+</html>

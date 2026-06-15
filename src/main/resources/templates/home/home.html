@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="shared/_layout"><!--상단 고정바-->
+<head>
+  <meta charset="UTF-8">
+  <title>FootMap</title>
+</head>
+<body>
+<div layout:fragment="content">
+  <section class="home-hero">
+    <div>
+      <p class="eyebrow">풋살 매칭 플랫폼</p>
+      <h1>FootMap</h1>
+      <p>팀, 선수, 게임 정보를 한 곳에서 확인하고 빠르게 매칭을 시작하세요.</p>
+      <div class="hero-actions">
+        <a href="/game/search" class="btn btn-primary">게임 찾기</a>
+        <a href="/board/list" class="btn btn-outline-primary">커뮤니티 보기</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="dashboard-grid">
+    <article class="panel-card">
+      <div class="section-heading">
+        <p class="eyebrow">Players</p>
+        <h2>Top3 선수</h2>
+      </div>
+      <table class="table app-table">
+        <thead>
+        <tr>
+          <th>닉네임</th>
+          <th>기록(골/도움/수비)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="topuser : ${Topuser}">
+          <td><a th:href="@{/players/detail(u_code=${topuser.u_code})}" th:text="${topuser.u_nick}">선수</a></td>
+          <td th:text="${topuser.u_goal}+'/'+${topuser.u_assi}+'/'+${topuser.u_cut}"></td>
+        </tr>
+        </tbody>
+      </table>
+    </article>
+
+    <article class="panel-card">
+      <div class="section-heading">
+        <p class="eyebrow">Teams</p>
+        <h2>Top3 팀</h2>
+      </div>
+      <table class="table app-table">
+        <thead>
+        <tr>
+          <th>팀명</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="topteams : ${topteam}">
+          <td th:text="${topteams.t_name}"></td>
+        </tr>
+        </tbody>
+      </table>
+    </article>
+  </section>
+
+</div>
+</body>
+</html>

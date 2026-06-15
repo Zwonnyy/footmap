@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="shared/_layout">
+<head>
+    <meta charset="UTF-8">
+    <title>팀 등록</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="page-title-row">
+        <div>
+            <p class="eyebrow">Team</p>
+            <h1>팀 만들기</h1>
+        </div>
+    </div>
+
+    <div class="card panel-card form-card">
+        <form action="/Team/create" method="post" class="card-body form-grid single-column">
+            <div class="form-group">
+                <label>팀명</label>
+                <input type="text" name="t_name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label>홈 구장</label>
+                <input type="text" name="t_stadium" class="form-control" placeholder="자주 이용하는 구장">
+            </div>
+            <div class="form-group">
+                <label>팀 소개</label>
+                <textarea name="t_intro" class="form-control" rows="8" placeholder="팀 분위기, 활동 지역, 선호 경기 시간 등을 입력하세요."></textarea>
+            </div>
+            <div class="action-row">
+                <button type="submit" class="btn btn-primary">등록하기</button>
+                <button type="button" class="btn btn-outline-primary" onclick="location.href='/Team/t_search'">취소하기</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

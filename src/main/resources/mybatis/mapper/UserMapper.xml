@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="footmap.footmap_spring.dao.userDao.UserMapper">
+    <select id="getUserList" resultType="footmap.footmap_spring.dto.userDto.User">
+        SELECT * FROM USER;
+    </select>
+
+    <select id="getTopuserList" resultType="footmap.footmap_spring.dto.userDto.User">
+        SELECT *
+        FROM USER
+        ORDER BY U_GOAL DESC LIMIT 0,3;
+    </select>
+
+    <select id="getGoalRanking" resultType="footmap.footmap_spring.dto.userDto.User">
+        SELECT *
+        FROM USER
+        ORDER BY U_GOAL DESC, U_ASSI DESC, U_CUT DESC
+    </select>
+
+    <select id="getAssistRanking" resultType="footmap.footmap_spring.dto.userDto.User">
+        SELECT *
+        FROM USER
+        ORDER BY U_ASSI DESC, U_GOAL DESC, U_CUT DESC
+    </select>
+
+    <select id="getCutRanking" resultType="footmap.footmap_spring.dto.userDto.User">
+        SELECT *
+        FROM USER
+        ORDER BY U_CUT DESC, U_GOAL DESC, U_ASSI DESC
+    </select>
+
+    <select id="getOverallRanking" resultType="footmap.footmap_spring.dto.userDto.User">
+        SELECT *
+        FROM USER
+        ORDER BY (U_GOAL * 3 + U_ASSI * 2 + U_CUT) DESC, U_GOAL DESC
+    </select>
+
+    <select id="getUserByCode" resultType="footmap.footmap_spring.dto.userDto.User">
+        SELECT *
+        FROM USER
+        WHERE U_CODE = #{u_code}
+    </select>
+
+    <select id="getTeamMembers" resultType="footmap.footmap_spring.dto.userDto.User">
+        SELECT U.*
+        FROM USER U
+        JOIN TEAM_MANAGEMENT TM ON U.U_CODE = TM.U_CODE
+        WHERE TM.T_CODE = #{t_code}
+          AND TM.TM_STATUS = 'APPROVED'
+        ORDER BY U.U_GOAL DESC, U.U_ASSI DESC, U.U_CUT DESC
+    </select>
+
+    <insert id="saveUser" parameterType="footmap.footmap_spring.dto.userDto.User">
+        <!--회원가입-->
+        INSERT INTO USER(U_ID,U_PW,U_NICK,U_NAME,U_BIRTH,U_SEX,U_TEL,U_MAIL,USER_AUTH)
+        VALUES (#{u_id},#{u_pw},#{u_nick},#{u_name},#{u_birth},#{u_sex},#{u_tel},#{u_mail},#{user_auth});
+    </insert>
+
+    <select id="getUserAccount" resultType="footmap.footmap_spring.dto.userDto.User">
+        SELECT *
+        FROM USER
+        WHERE U_ID = #{u_id};
+    </select>
+
+    <update id="UpdateUser" parameterType="footmap.footmap_spring.dto.userDto.User">
+        UPDATE USER
+        SET
+        U_PW=#{u_pw},
+        U_NICK=#{u_nick},
+        U_TEL=#{u_tel},
+        U_MAIL=#{u_mail}
+        WHERE
+        U_ID=#{u_id};
+    </update>
+
+
+
+
+
+
+</mapper>
+

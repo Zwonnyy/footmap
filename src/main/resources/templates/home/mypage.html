@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="shared/_layout">
+<head>
+  <meta charset="UTF-8">
+  <title>마이페이지</title>
+</head>
+<body>
+<div layout:fragment="content">
+  <div class="page-title-row">
+    <div>
+      <p class="eyebrow">My Page</p>
+      <h1 th:text="${users.u_nick}+'님의 기록'">내 기록</h1>
+    </div>
+    <button type="button" class="btn btn-outline-primary" onclick="location.href='/CertificationupdateForm'">내정보 수정</button>
+  </div>
+
+  <section class="stat-grid">
+    <div class="stat-card"><span>종합 점수</span><strong th:text="${totalScore}">0</strong></div>
+    <div class="stat-card"><span>골</span><strong th:text="${users.u_goal}">0</strong></div>
+    <div class="stat-card"><span>어시스트</span><strong th:text="${users.u_assi}">0</strong></div>
+    <div class="stat-card"><span>수비</span><strong th:text="${users.u_cut}">0</strong></div>
+  </section>
+
+  <section class="dashboard-grid mypage-grid">
+    <article class="panel-card">
+      <div class="card-header">개인정보</div>
+      <div class="card-body">
+        <dl class="profile-list">
+          <dt>아이디</dt><dd th:text="${users.u_id}">아이디</dd>
+          <dt>이름</dt><dd th:text="${users.u_name}">이름</dd>
+          <dt>생년월일</dt><dd th:text="${users.u_birth}">생년월일</dd>
+          <dt>전화번호</dt><dd th:text="${users.u_tel}">전화번호</dd>
+          <dt>이메일</dt><dd th:text="${users.u_mail}">이메일</dd>
+          <dt>성별</dt>
+          <dd>
+            <span th:if="${users.u_sex == 1}">남자</span>
+            <span th:if="${users.u_sex == 2}">여자</span>
+          </dd>
+        </dl>
+      </div>
+    </article>
+
+    <article class="panel-card">
+      <div class="card-header">소속팀</div>
+      <div class="card-body">
+        <table class="table app-table">
+          <tbody>
+          <tr th:each="team : ${userinteam}">
+            <td><a th:href="@{/Team/detail(t_code=${team.t_code})}" th:text="${team.t_name}">팀명</a></td>
+            <td th:text="${team.t_stadium}">구장</td>
+          </tr>
+          <tr th:if="${#lists.isEmpty(userinteam)}"><td colspan="2">소속팀이 없습니다.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+  </section>
+</div>
+</body>
+</html>

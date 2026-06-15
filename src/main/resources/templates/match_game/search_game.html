@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="shared/_layout">
+<head>
+  <title>게임찾기</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div layout:fragment="content">
+
+  <div class="page-title-row">
+    <div>
+      <p class="eyebrow">Match</p>
+      <h1>게임찾기</h1>
+    </div>
+    <div class="action-row">
+      <a href="/game/registerForm" class="btn btn-primary">게임 등록</a>
+      <a href="/game/list" class="btn btn-outline-primary">내게임 내역</a>
+    </div>
+  </div>
+
+  <div class="search-panel">
+    <input type="text" class="form-control" placeholder="경기장 또는 팀 검색">
+    <input type="button" value="검색하기" class="btn btn-primary">
+  </div>
+
+  <table class="table app-table">
+    <thead>
+    <tr>
+      <th>등록팀</th>
+      <th>게임정보</th>
+      <th>상태</th>
+      <th>신청</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="game:${game}">
+      <td th:text="${game.t_name}">팀 이름</td>
+      <td>
+        <strong th:text="${game.g_date}+${game.g_time}">게임일시</strong>
+        <p class="helper-text" th:text="${game.f_name}+' · '+${game.g_peo}">경기장</p>
+        <p class="helper-text" th:if="${game.g_intro}" th:text="${game.g_intro}">소개</p>
+      </td>
+      <td>
+        <span class="status-badge open" th:if="${game.g_magam == 1}">신청 가능</span>
+        <span class="status-badge pending" th:if="${game.g_magam == 2}">승인 대기</span>
+        <span class="status-badge closed" th:if="${game.g_magam == 3}">매칭 완료</span>
+      </td>
+      <td>
+        <form action="/game/apply" method="post" class="inline-form" th:if="${game.g_magam == 1}">
+          <input type="hidden" name="g_code" th:value="${game.g_code}">
+          <input type="number" name="g_search" min="1" class="form-control compact-input" placeholder="팀 코드" required>
+          <button type="submit" class="btn btn-primary">신청하기</button>
+        </form>
+        <span class="helper-text" th:if="${game.g_magam != 1}" th:text="${game.search_t_name ?: '신청팀 확인 중'}">상태</span>
+      </td>
+    </tr>
+    <tr th:if="${#lists.isEmpty(game)}">
+      <td colspan="4">등록된 게임이 없습니다.</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

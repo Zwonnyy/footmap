@@ -1,0 +1,74 @@
+<!--회원가입 페이지-->
+<!--signup.html-->
+
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" lang="ko" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link th:href="@{/css/styles.css}" rel="stylesheet" />
+  <title>FootMap 회원가입</title>
+
+</head>
+<body class="auth-page">
+<div class="auth-shell">
+  <form th:action="@{/Write}" method="post" modelAttribute="user" class="card auth-card form-card">
+    <div class="card-header">
+      <p class="eyebrow">Create account</p>
+      <h1>회원가입</h1>
+    </div>
+    <div class="card-body form-grid">
+    <div class="form-group">
+      <label>ID</label>
+      <input type="text" name="u_id" th:value="${user?.u_id}" placeholder="소문자+숫자" class="form-control">
+      <span class="jb-red" th:text="${valid_u_id}"></span>
+    </div>
+    <div class="form-group">
+      <label>PASSWORD</label>
+      <input type="password" name="u_pw" th:value="${user?.u_pw}" placeholder="대문자,소문자,숫자,문자" class="form-control">
+      <span class="jb-red" th:text="${valid_u_pw}"></span>
+    </div>
+    <div class="form-group">
+      <label>닉네임</label>
+      <input type="text" name="u_nick" th:value="${user?.u_nick}" placeholder="특수문자 불가" class="form-control">
+      <span class="jb-red" th:text="${valid_u_nick}"></span>
+    </div>
+    <div class="form-group">
+      <label>이름</label>
+      <input type="text" name="u_name" th:value="${user?.u_name}" placeholder="이름" class="form-control">
+      <span class="jb-red" th:text="${valid_u_name}"></span>
+    </div>
+    <div class="form-group">
+      <label>생년월일</label>
+      <input type="text" name="u_birth" th:value="${user?.u_birth}" placeholder="ex)1999-11-11" class="form-control">
+      <span class="jb-red" th:text="${valid_u_birth}"></span>
+    </div>
+    <div class="form-group">
+      <label>성별</label>
+      <div class="segmented-field">
+        <input type='radio' name='u_sex'th:checked="${user?.u_sex == 2}" value=2 />여성
+        <input type='radio' name='u_sex'th:checked="${user?.u_sex == 1}" value=1 />남성
+      </div>
+      <span class="jb-red" th:text="${valid_u_sex}"></span>
+    </div>
+    <div class="form-group">
+      <label>전화번호</label>
+      <input type="text" name="u_tel" th:value="${user?.u_tel}" placeholder="ex)010-****-****" class="form-control">
+      <span class="jb-red" th:text="${valid_u_tel}"></span>
+    </div>
+    <div class="form-group">
+      <label>이메일</label>
+      <input type="text" name="u_mail" th:value="${user?.u_mail}" placeholder="ex)aaaaa@naver.com" class="form-control">
+      <span class="jb-red" th:text="${valid_u_mail}"></span>
+    </div>
+    </div>
+    <div class="auth-actions card-footer">
+      <input type="submit" value="가입완료" class="btn btn-primary">
+      <input type ="button" value = "취소" onClick="location.href='/'" class="btn btn-outline-primary">
+    </div>
+  </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="shared/_layout">
+<head>
+    <meta charset="UTF-8">
+    <title>풋살장 상세 정보</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <nav class="sub-nav">
+        <a href="/Page/s_intro">사이트 소개</a>
+        <a href="/Page/s_rule">이용 수칙</a>
+        <a class="active" href="/Page/FINFO">풋살장 정보</a>
+        <a href="/Page/FLIST">풋살장 리스트</a>
+        <a href="/Page/Notice">공지사항</a>
+        <a href="/Page/Event">이벤트</a>
+        <a href="/Page/FAQ">FAQ</a>
+    </nav>
+
+    <section class="field-detail" th:if="${field != null}">
+        <div class="field-detail-hero">
+            <p class="eyebrow" th:text="${field.f_AREA}">지역</p>
+            <h1 th:text="${field.f_NAME}">풋살장 이름</h1>
+            <p th:text="${field.f_ADD}">주소</p>
+        </div>
+
+        <div class="detail-grid">
+            <article class="panel-card detail-card">
+                <p class="eyebrow">Location</p>
+                <h2>위치</h2>
+                <p th:text="${field.f_ADD}">주소</p>
+                <p class="helper-text" th:text="${field.f_AREA}">지역</p>
+                <div class="map-actions">
+                    <a class="btn btn-primary" th:href="${naverMapUrl}" target="_blank" rel="noopener">네이버 지도</a>
+                    <a class="btn btn-outline-primary" th:href="${kakaoMapUrl}" target="_blank" rel="noopener">카카오맵</a>
+                    <a class="btn btn-outline-primary" th:href="${googleMapUrl}" target="_blank" rel="noopener">구글 지도</a>
+                </div>
+            </article>
+            <article class="panel-card detail-card">
+                <p class="eyebrow">Price</p>
+                <h2>구장 비용</h2>
+                <p th:text="${field.f_COST ?: '비용 정보 준비 중'}">비용</p>
+            </article>
+            <article class="panel-card detail-card">
+                <p class="eyebrow">Hours</p>
+                <h2>운영 시간</h2>
+                <p th:text="${field.f_HOURS ?: '운영 시간 준비 중'}">운영 시간</p>
+            </article>
+            <article class="panel-card detail-card">
+                <p class="eyebrow">Size</p>
+                <h2>구장 규격</h2>
+                <p th:text="${field.f_SOU ?: '규격 정보 준비 중'}">규격</p>
+            </article>
+            <article class="panel-card detail-card">
+                <p class="eyebrow">Parking</p>
+                <h2>주차</h2>
+                <p th:text="${field.f_PARKING ?: '주차 정보 준비 중'}">주차</p>
+            </article>
+            <article class="panel-card detail-card">
+                <p class="eyebrow">Facility</p>
+                <h2>편의 시설</h2>
+                <p th:text="${field.f_SHOWER ?: '편의 시설 정보 준비 중'}">샤워실</p>
+            </article>
+        </div>
+
+        <article class="panel-card notice-card field-notice">
+            <p class="eyebrow">Notice</p>
+            <h2>이용 안내</h2>
+            <p th:text="${field.f_NOTICE ?: '등록된 안내사항이 없습니다.'}">안내사항</p>
+            <p class="helper-text" th:text="'문의: '+${field.f_TEL ?: '전화번호 준비 중'}">문의</p>
+        </article>
+
+        <div class="action-row">
+            <a href="/Page/FINFO" class="btn btn-outline-primary">풋살장 정보로</a>
+            <a href="/Page/FLIST" class="btn btn-primary">리스트 보기</a>
+        </div>
+    </section>
+
+    <article class="panel-card empty-state" th:if="${field == null}">
+        <h2>풋살장 정보를 찾을 수 없습니다.</h2>
+        <p>잘못된 접근이거나 삭제된 풋살장입니다.</p>
+        <a href="/Page/FINFO" class="btn btn-primary">풋살장 정보로 돌아가기</a>
+    </article>
+</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="shared/_layout">
+<head>
+    <meta charset="UTF-8">
+    <title>내 팀 보기</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="page-title-row">
+        <div>
+            <p class="eyebrow">Team</p>
+            <h1>내 팀 보기</h1>
+        </div>
+        <div class="action-row">
+            <a href="/Team/t_search" class="btn btn-outline-primary">팀 찾기</a>
+            <a href="/Team/t_commit" class="btn btn-primary">팀 만들기</a>
+        </div>
+    </div>
+
+    <section class="dashboard-grid">
+        <article class="panel-card team-card" th:each="team : ${teams}">
+            <div class="field-image">TEAM</div>
+            <div class="field-body">
+                <p class="eyebrow" th:text="${team.t_stadium ?: '홈 구장 미정'}">홈 구장</p>
+                <h2 th:text="${team.t_name}">팀명</h2>
+                <p th:text="${team.t_intro ?: '팀 소개가 아직 없습니다.'}">소개</p>
+                <p class="helper-text" th:text="'전적 '+${team.t_vic}+'/'+${team.t_draw}+'/'+${team.t_lose}">전적</p>
+            </div>
+        </article>
+        <article class="panel-card empty-state" th:if="${#lists.isEmpty(teams)}">
+            <h2>소속팀이 없습니다.</h2>
+            <p>팀을 만들거나 팀 목록에서 가입하면 이곳에 표시됩니다.</p>
+        </article>
+    </section>
+</div>
+</body>
+</html>

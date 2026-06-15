@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="shared/_layout">
+<head>
+    <meta charset="UTF-8">
+    <title>풋살장 리스트</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <nav class="sub-nav">
+        <a href="/Page/s_intro">사이트 소개</a>
+        <a href="/Page/s_rule">이용 수칙</a>
+        <a href="/Page/FINFO">풋살장 정보</a>
+        <a class="active" href="/Page/FLIST">풋살장 리스트</a>
+        <a href="/Page/Notice">공지사항</a>
+        <a href="/Page/Event">이벤트</a>
+        <a href="/Page/FAQ">FAQ</a>
+    </nav>
+
+    <div class="page-title-row">
+        <div>
+            <p class="eyebrow">Fields</p>
+            <h1>풋살장 리스트</h1>
+        </div>
+    </div>
+
+    <table class="table app-table">
+        <thead>
+        <tr>
+            <th>지역</th>
+            <th>이름</th>
+            <th>주소</th>
+            <th>규격</th>
+            <th>상세</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="field,index : ${field}" th:if="${index.index}<10">
+            <td th:text="${field.f_AREA}">지역</td>
+            <td th:text="${field.f_NAME}">이름</td>
+            <td th:text="${field.f_ADD}">주소</td>
+            <td th:text="${field.f_SOU}">규격</td>
+            <td><a class="btn btn-outline-primary" th:href="@{/Page/FINFO/detail(f_code=${field.f_CODE})}">보기</a></td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(field)}">
+            <td colspan="5">등록된 풋살장 정보가 없습니다.</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+.gradle/
+.idea/
+build/
+out/
+
+*.class
+*.log
+
+restartF_B/

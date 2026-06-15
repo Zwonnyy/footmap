@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="shared/_layout">
+<head>
+  <meta charset="UTF-8">
+  <title>선수 상세</title>
+</head>
+<body>
+<div layout:fragment="content">
+  <section class="panel-card player-profile" th:if="${player != null}">
+    <div>
+      <p class="eyebrow">Player</p>
+      <h1 th:text="${player.u_nick}">선수</h1>
+      <p th:text="${player.u_id}">아이디</p>
+    </div>
+    <div class="stat-grid">
+      <div class="stat-card"><span>종합</span><strong th:text="${totalScore}">0</strong></div>
+      <div class="stat-card"><span>골</span><strong th:text="${player.u_goal}">0</strong></div>
+      <div class="stat-card"><span>어시스트</span><strong th:text="${player.u_assi}">0</strong></div>
+      <div class="stat-card"><span>수비</span><strong th:text="${player.u_cut}">0</strong></div>
+    </div>
+  </section>
+
+  <section class="dashboard-grid" th:if="${player != null}">
+    <article class="panel-card">
+      <div class="card-header">소속팀</div>
+      <div class="card-body">
+        <table class="table app-table">
+          <tbody>
+          <tr th:each="team : ${teams}">
+            <td><a th:href="@{/Team/detail(t_code=${team.t_code})}" th:text="${team.t_name}">팀명</a></td>
+            <td th:text="${team.t_stadium}">구장</td>
+          </tr>
+          <tr th:if="${#lists.isEmpty(teams)}"><td colspan="2">소속팀이 없습니다.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+    <article class="panel-card">
+      <div class="card-header">기본 정보</div>
+      <div class="card-body">
+        <dl class="profile-list">
+          <dt>이름</dt><dd th:text="${player.u_name}">이름</dd>
+          <dt>이메일</dt><dd th:text="${player.u_mail}">이메일</dd>
+          <dt>전화번호</dt><dd th:text="${player.u_tel}">전화번호</dd>
+        </dl>
+      </div>
+    </article>
+  </section>
+
+  <article class="panel-card empty-state" th:if="${player == null}">
+    <h2>선수를 찾을 수 없습니다.</h2>
+    <a href="/players/ranking" class="btn btn-primary">랭킹으로 돌아가기</a>
+  </article>
+</div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>FootMap 로그인</title>
+  <!-- Favicon-->
+  <link rel="icon" type="image/x-icon" th:href="@{/assets/favicon.ico}" />
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link th:href="@{/css/styles.css}" rel="stylesheet" />
+</head>
+<body class="auth-page" >
+<div class="auth-shell">
+  <div class="card auth-card">
+    <div class="card-header">
+      <p class="eyebrow">Welcome back</p>
+      <h1>로그인</h1>
+    </div>
+    <div class="card-body">
+      <th:block th:if="${param.logout != null}">
+        <div class="alert alert-success">로그아웃되었습니다.</div>
+      </th:block>
+
+      <form id="registerForm" action="/login" method="post">
+        <input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+        <div class="input-group mb-3">
+          <span class="input-group-text">아이디</span>
+          <input type="text" name="username" class="form-control" placeholder="USER ID" >
+        </div>
+        <div class="input-group mb-3">
+          <span class="input-group-text">패스워드</span>
+          <input type="password" name="password" class="form-control" placeholder="PASSWORD">
+
+
+
+        </div>
+        <div class="input-group mb-3 ">
+          <input class="form-check-input" type="checkbox" name="remember-me">
+          <label class="form-check-label">
+            자동 로그인
+          </label>
+        </div>
+        <span th:if="${error}">
+            <p id="valid" class="alert alert-danger" th:text="${exception}"></p>
+        </span>
+
+
+        <div class="auth-actions">
+          <button type="submit" class="btn btn-primary submitBtn">로그인</button>
+          <button type="button" class="btn btn-outline-primary submitBtn" onclick="location.href='/signUp'">회원가입</button>
+          <button type="button" class="btn btn-link submitBtn" onclick="location.href='/'">홈으로</button>
+        </div>
+      </form>
+    </div><!--end card body-->
+  </div><!--end card-->
+</div>
+</body>
+</html>

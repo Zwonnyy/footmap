@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="shared/_layout">
+<head>
+    <meta charset="UTF-8">
+    <title>풋살장 정보</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <nav class="sub-nav">
+        <a href="/Page/s_intro">사이트 소개</a>
+        <a href="/Page/s_rule">이용 수칙</a>
+        <a class="active" href="/Page/FINFO">풋살장 정보</a>
+        <a href="/Page/FLIST">풋살장 리스트</a>
+        <a href="/Page/Notice">공지사항</a>
+        <a href="/Page/Event">이벤트</a>
+        <a href="/Page/FAQ">FAQ</a>
+    </nav>
+
+    <div class="page-title-row">
+        <div>
+            <p class="eyebrow">Fields</p>
+            <h1>풋살장 정보</h1>
+        </div>
+        <a href="/Page/FLIST" class="btn btn-outline-primary">리스트 보기</a>
+    </div>
+
+    <section class="field-grid">
+        <article class="panel-card field-card" th:each="field : ${field}">
+            <div class="field-image">FIELD</div>
+            <div class="field-body">
+                <p class="eyebrow" th:text="${field.f_AREA}">지역</p>
+                <h2 th:text="${field.f_NAME}">풋살장 이름</h2>
+                <p th:text="${field.f_ADD}">주소</p>
+                <p class="helper-text" th:text="${field.f_SOU}">규격</p>
+                <div class="action-row field-actions">
+                    <a class="btn btn-primary" th:href="@{/Page/FINFO/detail(f_code=${field.f_CODE})}">상세 정보</a>
+                </div>
+            </div>
+        </article>
+        <article class="panel-card empty-state" th:if="${#lists.isEmpty(field)}">
+            <h2>등록된 풋살장 정보가 없습니다.</h2>
+            <p>DB에 FINFO 테이블과 데이터가 추가되면 이 영역에 풋살장 정보가 표시됩니다.</p>
+        </article>
+    </section>
+</div>
+</body>
+</html>

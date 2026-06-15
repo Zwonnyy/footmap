@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="shared/_layout">
+<head>
+    <meta charset="UTF-8">
+    <title>팀 상세 정보</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <section class="panel-card team-detail" th:if="${team != null}">
+        <div>
+            <p class="eyebrow">Team</p>
+            <h1 th:text="${team.t_name}">팀명</h1>
+            <p th:text="${team.t_intro ?: '팀 소개가 아직 없습니다.'}">팀 소개</p>
+        </div>
+        <div class="stat-grid">
+            <div class="stat-card"><span>승</span><strong th:text="${team.t_vic}">0</strong></div>
+            <div class="stat-card"><span>무</span><strong th:text="${team.t_draw}">0</strong></div>
+            <div class="stat-card"><span>패</span><strong th:text="${team.t_lose}">0</strong></div>
+            <div class="stat-card"><span>홈 구장</span><strong class="small-stat" th:text="${team.t_stadium ?: '-'}">-</strong></div>
+        </div>
+    </section>
+
+    <section class="panel-card">
+        <div class="card-header">팀원 스탯</div>
+        <div class="card-body">
+            <table class="table app-table">
+                <thead>
+                <tr>
+                    <th>선수</th>
+                    <th>골</th>
+                    <th>어시스트</th>
+                    <th>수비</th>
+                    <th>종합</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="member : ${members}">
+                    <td><a th:href="@{/players/detail(u_code=${member.u_code})}" th:text="${member.u_nick}">닉네임</a></td>
+                    <td th:text="${member.u_goal}">0</td>
+                    <td th:text="${member.u_assi}">0</td>
+                    <td th:text="${member.u_cut}">0</td>
+                    <td th:text="${member.u_goal * 3 + member.u_assi * 2 + member.u_cut}">0</td>
+                </tr>
+                <tr th:if="${#lists.isEmpty(members)}"><td colspan="5">등록된 팀원이 없습니다.</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <article class="panel-card empty-state" th:if="${team == null}">
+        <h2>팀 정보를 찾을 수 없습니다.</h2>
+        <a href="/Team/t_search" class="btn btn-primary">팀 목록으로</a>
+    </article>
+</div>
+</body>
+</html>

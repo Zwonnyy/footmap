@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="shared/_layout">
+<head>
+    <meta charset="UTF-8">
+    <title>FAQ</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <nav class="sub-nav">
+        <a href="/Page/s_intro">사이트 소개</a>
+        <a href="/Page/s_rule">이용 수칙</a>
+        <a href="/Page/FINFO">풋살장 정보</a>
+        <a href="/Page/FLIST">풋살장 리스트</a>
+        <a href="/Page/Notice">공지사항</a>
+        <a href="/Page/Event">이벤트</a>
+        <a class="active" href="/Page/FAQ">FAQ</a>
+    </nav>
+
+    <div class="page-title-row">
+        <div>
+            <p class="eyebrow">FAQ</p>
+            <h1>자주하는 질문</h1>
+        </div>
+    </div>
+
+    <section class="faq-list">
+        <article class="panel-card faq-item">
+            <h2>매치 진행은 어떻게 되나요?</h2>
+            <p>등록팀이 경기 정보를 올리고, 신청팀이 매칭을 요청하면 등록팀이 승인하는 방식으로 진행됩니다.</p>
+        </article>
+        <article class="panel-card faq-item">
+            <h2>경기 매니저가 있나요?</h2>
+            <p>매니저 운영은 준비 중입니다. 현재는 팀 간 자율 운영을 기준으로 하며, 과격한 플레이는 서로 주의해주세요.</p>
+        </article>
+    </section>
+</div>
+</body>
+</html>

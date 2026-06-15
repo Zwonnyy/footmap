@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="shared/_layout">
+<head>
+  <title>게임 등록</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div layout:fragment="content">
+  <div class="page-title-row">
+    <div>
+      <p class="eyebrow">Match</p>
+      <h1>게임 등록</h1>
+    </div>
+  </div>
+
+  <div class="card panel-card form-card">
+    <form action="/game/register" method="POST" class="card-body form-grid single-column">
+      <div class="form-group">
+        <label>등록팀</label>
+        <select name="g_dung" required class="form-select">
+          <option value="" disabled selected>팀 선택</option>
+          <option th:each="team : ${myTeams}" th:value="${team.t_code}" th:text="${team.t_name}"></option>
+        </select>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label>일자</label>
+          <input type="date" name="g_date" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label>시간</label>
+          <input type="time" name="g_time" class="form-control" required>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label>인원수</label>
+          <select name="g_peo" required class="form-select">
+            <option value="" disabled selected>인원수</option>
+            <option value="3:3">3:3</option>
+            <option value="4:4">4:4</option>
+            <option value="5:5">5:5</option>
+            <option value="6:6">6:6</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>구장</label>
+          <select name="f_code" required class="form-select">
+            <option value="" disabled selected>구장 선택</option>
+            <option th:each="field : ${fields}" th:value="${field.f_CODE}" th:text="${field.f_NAME}"></option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>추가 내용</label>
+        <textarea rows="8" name="g_intro" placeholder="경기 소개, 준비물, 희망 매너 등을 입력하세요." class="form-control"></textarea>
+      </div>
+
+      <div class="action-row">
+        <input type="submit" value="등록하기" class="btn btn-primary">
+        <input type="button" value="취소하기" class="btn btn-outline-primary" onClick="location.href='/game/search'">
+      </div>
+    </form>
+  </div>
+</div>
+</body>
+</html>

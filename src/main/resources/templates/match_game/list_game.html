@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="shared/_layout">
+<head>
+  <title>게임내역</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div layout:fragment="content">
+  <div class="page-title-row">
+    <div>
+      <p class="eyebrow">Match</p>
+      <h1>내 게임내역</h1>
+    </div>
+    <a href="/game/search" class="btn btn-outline-primary">게임찾기</a>
+  </div>
+
+  <table class="table app-table">
+    <thead>
+    <tr>
+      <th>등록팀</th>
+      <th>신청팀</th>
+      <th>일정</th>
+      <th>구장</th>
+      <th>상태</th>
+      <th>관리</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="game : ${games}">
+      <td th:text="${game.t_name}">등록팀</td>
+      <td th:text="${game.search_t_name ?: '-'}">신청팀</td>
+      <td th:text="${game.g_date}+${game.g_time}">일정</td>
+      <td th:text="${game.f_name}">구장</td>
+      <td>
+        <span class="status-badge open" th:if="${game.g_magam == 1}">신청 가능</span>
+        <span class="status-badge pending" th:if="${game.g_magam == 2}">승인 대기</span>
+        <span class="status-badge closed" th:if="${game.g_magam == 3}">매칭 완료</span>
+      </td>
+      <td>
+        <div class="action-row" th:if="${game.g_magam == 2}">
+          <form action="/game/approve" method="post">
+            <input type="hidden" name="g_code" th:value="${game.g_code}">
+            <button type="submit" class="btn btn-primary">승인</button>
+          </form>
+          <form action="/game/reject" method="post">
+            <input type="hidden" name="g_code" th:value="${game.g_code}">
+            <button type="submit" class="btn btn-outline-danger">거절</button>
+          </form>
+        </div>
+        <span class="helper-text" th:if="${game.g_magam != 2}">관리 작업 없음</span>
+      </td>
+    </tr>
+    <tr th:if="${#lists.isEmpty(games)}">
+      <td colspan="6">내 게임내역이 없습니다.</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>

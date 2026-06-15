@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="footmap.footmap_spring.dao.noticeDao.NoticeMapper">
+    <!--공지사항-->
+
+    <!--풋살장 정보-->
+
+    <select id="finfo3" resultType="footmap.footmap_spring.dto.noticeDto.notice">
+
+        select * FROM FINFO;
+
+    </select>
+
+    <select id="getFieldDetail" resultType="footmap.footmap_spring.dto.noticeDto.notice">
+        SELECT *
+        FROM FINFO
+        WHERE F_CODE = #{f_code}
+    </select>
+
+
+</mapper>
