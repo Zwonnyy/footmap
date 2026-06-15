@@ -17,15 +17,19 @@
         <form action="/Team/create" method="post" class="card-body form-grid single-column">
             <div class="form-group">
                 <label>팀명</label>
-                <input type="text" name="t_name" class="form-control" required>
+                <input type="text" name="t_name" id="teamName" class="form-control" required>
             </div>
             <div class="form-group">
                 <label>홈 구장</label>
-                <input type="text" name="t_stadium" class="form-control" placeholder="자주 이용하는 구장">
+                <input type="text" name="t_stadium" id="teamStadium" class="form-control" placeholder="자주 이용하는 구장">
             </div>
             <div class="form-group">
                 <label>팀 소개</label>
-                <textarea name="t_intro" class="form-control" rows="8" placeholder="팀 분위기, 활동 지역, 선호 경기 시간 등을 입력하세요."></textarea>
+                <textarea name="t_intro" id="teamIntro" class="form-control" rows="8" placeholder="팀 분위기, 활동 지역, 선호 경기 시간 등을 입력하세요."></textarea>
+            </div>
+            <div class="ai-toolbox">
+                <button type="button" class="btn btn-outline-primary" id="teamIntroButton">AI로 팀 소개 작성</button>
+                <div class="ai-output" id="teamAiOutput">팀명과 홈 구장을 입력하면 소개 문구를 만들 수 있습니다.</div>
             </div>
             <div class="action-row">
                 <button type="submit" class="btn btn-primary">등록하기</button>
@@ -33,6 +37,23 @@
             </div>
         </form>
     </div>
+    <script>
+        document.getElementById('teamIntroButton').addEventListener('click', async () => {
+            const output = document.getElementById('teamAiOutput');
+            output.textContent = 'AI가 팀 소개를 작성하는 중입니다.';
+            const response = await fetch('/ai/team-intro', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
+                body: new URLSearchParams({
+                    teamName: document.getElementById('teamName').value,
+                    stadium: document.getElementById('teamStadium').value
+                })
+            });
+            const text = await response.text();
+            document.getElementById('teamIntro').value = text;
+            output.textContent = text;
+        });
+    </script>
 </div>
 </body>
 </html>

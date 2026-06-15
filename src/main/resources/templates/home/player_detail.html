@@ -23,6 +23,12 @@
   </section>
 
   <section class="dashboard-grid" th:if="${player != null}">
+    <article class="panel-card ai-card">
+      <div class="card-header">AI 선수 분석</div>
+      <div class="card-body">
+        <p th:text="${aiComment}">AI 분석</p>
+      </div>
+    </article>
     <article class="panel-card">
       <div class="card-header">소속팀</div>
       <div class="card-body">

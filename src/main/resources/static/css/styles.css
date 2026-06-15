@@ -22925,6 +22925,60 @@ a:hover {
     font-size: 0.92rem;
 }
 
+.ai-card {
+    margin-bottom: 18px;
+    border-color: rgba(23, 111, 82, 0.26);
+}
+
+.ai-panel {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin: 18px 0;
+}
+
+.ai-panel > div,
+.ai-toolbox,
+.ai-output {
+    border: 1px solid rgba(23, 111, 82, 0.22);
+    border-radius: 8px;
+    background: #f7fbf9;
+}
+
+.ai-panel > div {
+    padding: 18px;
+}
+
+.ai-panel h2 {
+    margin: 0 0 8px;
+    font-size: 1.05rem;
+    font-weight: 850;
+}
+
+.ai-panel p,
+.ai-card p {
+    margin: 0;
+    color: var(--fm-text);
+    line-height: 1.65;
+}
+
+.ai-toolbox {
+    display: grid;
+    gap: 12px;
+    padding: 14px;
+}
+
+.ai-output {
+    min-height: 46px;
+    padding: 12px 14px;
+    color: var(--fm-muted);
+    line-height: 1.55;
+}
+
+.ai-textarea {
+    background: #f7fbf9;
+}
+
 .pagination {
     gap: 6px;
 }
@@ -23425,6 +23479,7 @@ textarea.form-control {
     .field-grid,
     .ranking-grid,
     .stat-grid,
+    .ai-panel,
     .detail-grid {
         grid-template-columns: 1fr;
     }

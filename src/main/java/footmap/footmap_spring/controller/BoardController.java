@@ -4,6 +4,7 @@ import footmap.footmap_spring.dto.PageRequestDTO;
 import footmap.footmap_spring.dto.PageResponseDTO;
 import footmap.footmap_spring.dto.boardDto.Board;
 import footmap.footmap_spring.dto.userDto.User;
+import footmap.footmap_spring.service.aiService.AiService;
 import footmap.footmap_spring.service.boardService.BoardService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,8 @@ public class BoardController {
 
     @Autowired
     private BoardService boardService;
+    @Autowired
+    private AiService aiService;
 
     @GetMapping("/list")
     public String boardList(@Valid PageRequestDTO pageRequestDTO, Model model){
@@ -61,6 +64,10 @@ public class BoardController {
         Board board = boardService.getBoardView(idx);
         model.addAttribute("board",board);
         model.addAttribute("isOwner", isOwner(board, authentication));
+        if (board != null) {
+            model.addAttribute("aiSummary", aiService.summarizeBoard(board.getB_title(), board.getB_contents()));
+            model.addAttribute("contentSafety", aiService.moderateText(board.getB_contents()));
+        }
         return "/board/view_board";
     }
 

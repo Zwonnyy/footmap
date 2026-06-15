@@ -25,6 +25,13 @@
     <input type="button" value="검색하기" class="btn btn-primary">
   </div>
 
+  <section class="panel-card ai-card" th:if="${matchRecommendation}">
+    <div class="card-header">AI 매칭 추천</div>
+    <div class="card-body">
+      <p th:text="${matchRecommendation}">AI 추천</p>
+    </div>
+  </section>
+
   <table class="table app-table">
     <thead>
     <tr>

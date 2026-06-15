@@ -2,6 +2,7 @@ package footmap.footmap_spring.controller;
 
 import footmap.footmap_spring.dto.teamDto.team;
 import footmap.footmap_spring.dto.userDto.User;
+import footmap.footmap_spring.service.aiService.AiService;
 import footmap.footmap_spring.service.teamService.TeamService;
 import footmap.footmap_spring.service.userService.UserService;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,7 @@ public class MatchController {
 
     private final TeamService teamService;
     private final UserService userService;
+    private final AiService aiService;
 
     @RequestMapping("/t_search")
     public String t_search(Model model){
@@ -64,8 +66,10 @@ public class MatchController {
 
     @RequestMapping("/detail")
     public String teamDetail(@RequestParam("t_code") int t_code, Model model){
-        model.addAttribute("team", teamService.getTeamByCode(t_code));
+        team team = teamService.getTeamByCode(t_code);
+        model.addAttribute("team", team);
         model.addAttribute("members", userService.getTeamMembers(t_code));
+        model.addAttribute("teamRecommendation", aiService.recommendPlayerForTeam(team));
         return "Team/team";
     }
 }

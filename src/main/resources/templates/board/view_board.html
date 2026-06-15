@@ -51,6 +51,19 @@
             </textarea>
           </div>
 
+          <div class="ai-panel">
+            <div>
+              <p class="eyebrow">AI Summary</p>
+              <h2>게시글 요약</h2>
+              <p th:text="${aiSummary}">요약</p>
+            </div>
+            <div>
+              <p class="eyebrow">AI Safety</p>
+              <h2>표현 검사</h2>
+              <p th:text="${contentSafety}">검사 결과</p>
+            </div>
+          </div>
+
           <div class="input-group mb-3">
             <span class="input-group-text">작성일</span>
 <!--            <input type="text" class="form-control" th:value="${#temporals.format(board.getReg_date(), 'yyyy-MM-dd')}" readonly>-->

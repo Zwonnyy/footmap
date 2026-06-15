@@ -1,8 +1,8 @@
 package footmap.footmap_spring.controller;
 
-import footmap.footmap_spring.dto.noticeDto.notice;
 import footmap.footmap_spring.dto.teamDto.team;
 import footmap.footmap_spring.dto.userDto.User;
+import footmap.footmap_spring.service.aiService.AiService;
 import footmap.footmap_spring.service.noticeService.NoticeService;
 import footmap.footmap_spring.service.teamService.TeamService;
 import footmap.footmap_spring.dto.gameDto.game;
@@ -29,6 +29,8 @@ public class GameController {
     private TeamService teamService;
     @Autowired
     private NoticeService noticeService;
+    @Autowired
+    private AiService aiService;
 
     //게임등록페이지
     @PreAuthorize("hasRole('USER')")
@@ -55,10 +57,21 @@ public class GameController {
     //@PreAutohorize(접근제한 표현식)뒤에 들어가는 문자열은 표현식 따라서 상황에맞게 작성해야함
     //현재쓰는 (hasRole(표현식)은 특정한 권한이 있는 사용자 를 허용시켜줌 ex)우리페이지 게시판
     @GetMapping("/search")
-    public String gameSearch(Model model){
+    public String gameSearch(Model model, Authentication authentication){
         List<game> gameList = gameService.getGameList();
         model.addAttribute("game",gameList);
+        User user = (User) authentication.getPrincipal();
+        List<team> myTeams = teamService.getTeaminUser(user.getU_code());
+        if (!myTeams.isEmpty()) {
+            model.addAttribute("matchRecommendation", aiService.recommendMatch(myTeams.get(0)));
+        }
         return "match_game/search_game";
+    }
+
+    @PreAuthorize("hasRole('USER')")
+    @GetMapping("/reviewForm")
+    public String reviewForm() {
+        return "match_game/review_ai";
     }
 
     @PreAuthorize("hasRole('USER')")

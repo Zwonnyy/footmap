@@ -22,6 +22,13 @@
         </div>
     </section>
 
+    <section class="panel-card ai-card" th:if="${team != null}">
+        <div class="card-header">AI 팀 추천</div>
+        <div class="card-body">
+            <p th:text="${teamRecommendation}">AI 추천</p>
+        </div>
+    </section>
+
     <section class="panel-card">
         <div class="card-header">팀원 스탯</div>
         <div class="card-body">

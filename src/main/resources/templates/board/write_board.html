@@ -16,12 +16,19 @@
         <form action="/board/write" method="POST" class="card-body form-grid single-column">
             <div class="form-group">
                 <label>글제목</label>
-                <input type="text" name="b_title" class="form-control"/>
+                <input type="text" name="b_title" id="boardTitle" class="form-control"/>
             </div>
             <p class="helper-text">작성자는 로그인한 계정 정보로 자동 등록됩니다.</p>
             <div class="form-group">
                 <label>내용</label>
-                <textarea rows="10" name="b_contents" placeholder="게시글 입력" class="form-control"></textarea>
+                <textarea rows="10" name="b_contents" id="boardContents" placeholder="게시글 입력" class="form-control"></textarea>
+            </div>
+            <div class="ai-toolbox">
+                <div class="action-row">
+                    <button type="button" class="btn btn-outline-primary" id="summaryButton">AI 요약 미리보기</button>
+                    <button type="button" class="btn btn-outline-primary" id="moderationButton">AI 표현 검사</button>
+                </div>
+                <div class="ai-output" id="boardAiOutput">AI 결과가 여기에 표시됩니다.</div>
             </div>
             <div class="action-row">
                 <input type="submit" value="등록" class="btn btn-primary"/>
@@ -29,6 +36,29 @@
             </div>
         </form>
     </div>
+    <script>
+        const boardOutput = document.getElementById('boardAiOutput');
+        const callBoardAi = async (url, body) => {
+            boardOutput.textContent = 'AI가 내용을 확인하는 중입니다.';
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
+                body: new URLSearchParams(body)
+            });
+            boardOutput.textContent = await response.text();
+        };
+        document.getElementById('summaryButton').addEventListener('click', () => {
+            callBoardAi('/ai/board-summary', {
+                title: document.getElementById('boardTitle').value,
+                contents: document.getElementById('boardContents').value
+            });
+        });
+        document.getElementById('moderationButton').addEventListener('click', () => {
+            callBoardAi('/ai/moderate', {
+                text: document.getElementById('boardContents').value
+            });
+        });
+    </script>
 </div>
 </body>
 </html>

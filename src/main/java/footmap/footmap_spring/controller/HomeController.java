@@ -2,6 +2,7 @@ package footmap.footmap_spring.controller;
 
 import footmap.footmap_spring.dto.teamDto.team;
 import footmap.footmap_spring.dto.userDto.User;
+import footmap.footmap_spring.service.aiService.AiService;
 import footmap.footmap_spring.service.teamService.TeamService;
 import footmap.footmap_spring.service.userService.UserService;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +26,8 @@ public class HomeController {
     private UserService userService;
     @Autowired
     private TeamService teamService;
+    @Autowired
+    private AiService aiService;
 
     @RequestMapping("/")//메인페이지 userService의 getuserList와 getTopuserLIst로 선수전체의 목록과 top3선수의 목록을 가져옴
     public String home(Model model) {
@@ -132,6 +135,7 @@ public class HomeController {
         model.addAttribute("teams", teamService.getTeaminUser(u_code));
         if (player != null) {
             model.addAttribute("totalScore", player.getU_goal() * 3 + player.getU_assi() * 2 + player.getU_cut());
+            model.addAttribute("aiComment", aiService.analyzePlayer(player));
         }
         return "home/player_detail";
     }

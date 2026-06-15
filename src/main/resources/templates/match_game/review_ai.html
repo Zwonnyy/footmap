@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html lang="ko" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="shared/_layout">
+<head>
+  <title>AI 경기 후기</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div layout:fragment="content">
+  <div class="page-title-row">
+    <div>
+      <p class="eyebrow">AI Review</p>
+      <h1>경기 후기 작성</h1>
+    </div>
+    <a href="/game/list" class="btn btn-outline-primary">내게임 내역</a>
+  </div>
+
+  <div class="card panel-card form-card">
+    <div class="card-body form-grid single-column">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>등록팀</label>
+          <input type="text" id="homeTeam" class="form-control" placeholder="예: 풋맵 FC">
+        </div>
+        <div class="form-group">
+          <label>상대팀</label>
+          <input type="text" id="awayTeam" class="form-control" placeholder="예: 부산 올스타">
+        </div>
+      </div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>스코어</label>
+          <input type="text" id="score" class="form-control" placeholder="예: 4:3">
+        </div>
+        <div class="form-group">
+          <label>MVP</label>
+          <input type="text" id="mvp" class="form-control" placeholder="예: 김풋살">
+        </div>
+      </div>
+      <div class="action-row">
+        <button type="button" class="btn btn-primary" id="reviewButton">AI 후기 생성</button>
+      </div>
+      <textarea id="reviewOutput" class="form-control ai-textarea" rows="8" placeholder="생성된 후기가 여기에 표시됩니다."></textarea>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('reviewButton').addEventListener('click', async () => {
+      const output = document.getElementById('reviewOutput');
+      output.value = 'AI가 경기 후기를 작성하는 중입니다.';
+      const response = await fetch('/ai/review', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
+        body: new URLSearchParams({
+          homeTeam: document.getElementById('homeTeam').value,
+          awayTeam: document.getElementById('awayTeam').value,
+          score: document.getElementById('score').value,
+          mvp: document.getElementById('mvp').value
+        })
+      });
+      output.value = await response.text();
+    });
+  </script>
+</div>
+</body>
+</html>
